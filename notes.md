@@ -4,8 +4,17 @@ cybersecurity base project 2 notes
 <LOCALHOST> = 192.168.0.4
 <SNORTINTERFACE> = 1
 
+1. Vagrant destroy
+2. Vagrant up
+3. Install Snort 2.9.9.0 & snortrules-snapshot-2976
+4. Install WinPCap 4.1.1
+5. Snort conf changes
+6. Test with C:\Snort\et\snort.exe -c C:\Snort\etc\snort.conf -i 1 -T 
+
 snort test: C:\Snort\bin\snort -c c:\Snort\etc\snort.conf -T -i <SNORTINTERFACE>
 snort IDS: C:\Snort\bin\snort -d -l C:\snort\log -i 1 -c c:\Snort\etc\snort.conf -A console
+C:\Snort\bin\snort -de -l C:\snort\log -h 192.168.0.0/24 -i 1 -c c:\Snort\etc\snort.conf -A console
+C:\Users\vagrant>C:\Snort\bin\snort -d -l C:\snort\log -i 1 -c c:\Snort\etc\snort.conf -A console
 
 LHOST 172.28.128.4
 RHOST 172.28.128.3
