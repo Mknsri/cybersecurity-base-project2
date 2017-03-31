@@ -54,5 +54,8 @@ Discovered
 	5. set LHOST <LOCALHOST>
 	5. run
 	6. sysinfo
-
-	
+Undiscovered:
+4. CVE-2016-2019 - 
+Exploit failed: NoMethodError undefined method '[]' for nil:nilClass
+FIX:
+https://github.com/rapid7/metasploit-framework/commit/f838c9990fa3a7858297ada47288cc67f04d87e4
