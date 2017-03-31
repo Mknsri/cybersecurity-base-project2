@@ -1,20 +1,28 @@
 cybersecurity base project 2 notes
 
-<REMOTEHOST> = 192.168.0.3
-<LOCALHOST> = 192.168.0.4
+<REMOTEHOST> = 172.28.128.3
+<LOCALHOST> = 172.28.128.4
 <SNORTINTERFACE> = 1
+
+ virtualbox-iso: The VM will be run headless, without a GUI. If you want to
+ virtualbox-iso: view the screen of the VM, connect via VRDP without a password to
+ virtualbox-iso: rdp://127.0.0.1:5985
+ virtualbox-iso: Waiting 2m0s for boot...
+
+1. Clone
+2. vagrant plugin install vagrant-omnibus
+3. VAgrant up
 
 1. Vagrant destroy
 2. Vagrant up
 3. Install Snort 2.9.9.0 & snortrules-snapshot-2976
 4. Install WinPCap 4.1.1
 5. Snort conf changes
-6. Test with C:\Snort\et\snort.exe -c C:\Snort\etc\snort.conf -i 1 -T 
+6. Test with C:\Snort\etc\snort.exe -c C:\Snort\etc\snort.conf -i 1 -T 
+7. Ping test works with snort.exe -c C:\Snort\etc\snort.conf -i 1 -A console
+8. Turn off firewall
 
-snort test: C:\Snort\bin\snort -c c:\Snort\etc\snort.conf -T -i <SNORTINTERFACE>
-snort IDS: C:\Snort\bin\snort -d -l C:\snort\log -i 1 -c c:\Snort\etc\snort.conf -A console
-C:\Snort\bin\snort -de -l C:\snort\log -h 192.168.0.0/24 -i 1 -c c:\Snort\etc\snort.conf -A console
-C:\Users\vagrant>C:\Snort\bin\snort -d -l C:\snort\log -i 1 -c c:\Snort\etc\snort.conf -A console
+Test ping rule local.rules:  alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"ICMP test"; sid:10000001; rev:001;)
 
 LHOST 172.28.128.4
 RHOST 172.28.128.3
