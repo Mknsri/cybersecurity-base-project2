@@ -2,25 +2,23 @@ cybersecurity base project 2 notes
 
 <REMOTEHOST> = 172.28.128.3
 <LOCALHOST> = 172.28.128.4
-<SNORTINTERFACE> = 1
+<SNORTINTERFACE> = 2
 
  virtualbox-iso: The VM will be run headless, without a GUI. If you want to
  virtualbox-iso: view the screen of the VM, connect via VRDP without a password to
  virtualbox-iso: rdp://127.0.0.1:5985
  virtualbox-iso: Waiting 2m0s for boot...
 
+=Install=
 1. Clone
 2. vagrant plugin install vagrant-omnibus
-3. VAgrant up
-
-1. Vagrant destroy
-2. Vagrant up
-3. Install Snort 2.9.9.0 & snortrules-snapshot-2976
-4. Install WinPCap 4.1.1
-5. Snort conf changes
-6. Test with C:\Snort\etc\snort.exe -c C:\Snort\etc\snort.conf -i 1 -T 
-7. Ping test works with snort.exe -c C:\Snort\etc\snort.conf -i 1 -A console
-8. Turn off firewall
+3. Vagrant up
+=Configuration=
+1. Install Snort 2.9.9.0 & snortrules-snapshot-2976
+2. Install WinPCap 4.1.1
+3. Snort conf changes
+4. Test with C:\Snort\bin\snort.exe -c C:\Snort\etc\snort.conf -i <SNORTINTERFACE> -k none -T
+5. Ping test works with snort.exe -c C:\Snort\etc\snort.conf -i <SNORTINTERFACE> -A console -k none
 
 Test ping rule local.rules:  alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"ICMP test"; sid:10000001; rev:001;)
 
@@ -39,8 +37,6 @@ Discovered
 	5. set LHOST <LOCALHOST>
 	6. run
 	7. sysinfo
-
------------------------------------------------
 2. CVE-2014-3120 - ElasticSearch Dynamic Script Arbritrary Java Execution
 	Preqrequisites: Uncomment line 812 in server-other.rules ("SERVER-OTHER ElasticSearch script remote code execution attempt")
 	1. use exploit/multi/elasticsearch/script_mvel_rce
